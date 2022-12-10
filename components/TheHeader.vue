@@ -1,10 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>
-    <!-- <Navbar /> -->
-    <slot></slot>
-  </div>
+  <div>Component: TheHeader</div>
 </template>
 
 <style scoped></style>
