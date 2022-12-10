@@ -5,6 +5,7 @@
       <h2>Counter: {{ counter.counter }}</h2>
       <button class="bg-blue-500 p-4 m-2" @click="counter.increment">+</button>
       <button class="bg-red-500 p-4 m-2" @click="counter.decrement">-</button>
+      <Quasar />
     </div>
   </div>
 </template>

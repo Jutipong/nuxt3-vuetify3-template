@@ -39,4 +39,8 @@ Locally preview production build:
 npm run preview
 ```
 
+```bash
+npm remove --dev @nuxtjs/google-fonts
+```
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
