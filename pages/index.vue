@@ -5,12 +5,21 @@
       <h2>Counter: {{ counter.counter }}</h2>
       <button class="bg-blue-500 p-4 m-2" @click="counter.increment">+</button>
       <button class="bg-red-500 p-4 m-2" @click="counter.decrement">-</button>
-      <Quasar />
+      <!-- <Quasar /> -->
+      <h2>Sum: {{ sum }}</h2>
+      <h2>version: {{ $q.version }}</h2>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCounter } from '@/stores/counter';
+import { useQuasar } from 'quasar';
+
+const $q = useQuasar();
+
 const counter = useCounter();
+
+let sum = $ref(10);
+sum = +20;
 </script>

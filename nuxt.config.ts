@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   windicss: {
     analyze: true,
   },
+  experimental: {
+    reactivityTransform: true,
+  },
 });
