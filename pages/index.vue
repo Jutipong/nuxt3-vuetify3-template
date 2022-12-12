@@ -15,9 +15,7 @@
 <script setup lang="ts">
 import { useCounter } from '@/stores/counter';
 import { useQuasar } from 'quasar';
-
 const $q = useQuasar();
-
 const counter = useCounter();
 
 let sum = $ref(10);
