@@ -35,16 +35,16 @@
         <!-- item -->
         <q-item clickable :inset-level="0.2" class="hover:text-sky-600 hover:font-bold">
           <q-item-section avatar>
-            <q-icon name="home" />
+            <Icon name="mdi:home" />
           </q-item-section>
-          <q-item-section> 2.1</q-item-section>
+          <q-item-section>2.1</q-item-section>
         </q-item>
         <!-- item 2  -->
         <q-item clickable :inset-level="0.2" class="hover:text-sky-600 hover:font-bold">
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
-          <q-item-section> 2.2</q-item-section>
+          <q-item-section>2.2</q-item-section>
         </q-item>
       </q-expansion-item>
     </q-list>
