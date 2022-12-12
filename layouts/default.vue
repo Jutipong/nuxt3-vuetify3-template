@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header reveal elevated class="bg-primary text-white">
+    <q-header reveal elevated class="text-white bg-primary">
       <q-toolbar>
         <q-btn flat dense round :icon="leftDrawerOpen ? 'menu_open' : 'menu'" @click="toggleLeftDrawer" />
 
@@ -9,8 +9,8 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <LayoutsDrawerMenu />
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered :width="260">
+      <LayoutsDrawer />
     </q-drawer>
 
     <q-page-container>
@@ -24,3 +24,5 @@
 let leftDrawerOpen = $ref(false);
 const toggleLeftDrawer = () => (leftDrawerOpen = !leftDrawerOpen);
 </script>
+
+<style scoped></style>
