@@ -21,7 +21,10 @@
     </q-list>
     <!-- end home -->
     <q-list>
-      <q-expansion-item expand-separator label="Menu 1" header-class="hover:text-sky-500">
+      <q-expansion-item header-class="q-hoverable-remvoe hover:bg-sky-100">
+        <template v-slot:header>
+          <q-item-section class="text-black"> Menu 1 </q-item-section>
+        </template>
         <q-item clickable :inset-level="0.2" :manual-focus="true" class="hover:bg-sky-100 hover:border-r-4 hover:border-sky-500">
           <q-item-section avatar>
             <Icon name="mdi:home" />
@@ -32,7 +35,10 @@
     </q-list>
 
     <q-list>
-      <q-expansion-item expand-separator label=" Menu 2" v-model="root" header-class="hover:text-sky-500 ">
+      <q-expansion-item header-class="q-hoverable-remvoe hover:bg-sky-100">
+        <template v-slot:header>
+          <q-item-section class="text-black"> Menu 2 </q-item-section>
+        </template>
         <!-- item 1-->
         <q-item clickable :inset-level="0.2" :manual-focus="true" class="hover:bg-sky-100 hover:border-r-4 hover:border-sky-500">
           <q-item-section avatar>
@@ -71,5 +77,13 @@ let q2 = $ref(false);
   background: #1976d2 !important;
   /* top: 0; */
   /* right: 0; */
+}
+
+/* .q-hoverable {
+  color: green !important;
+} */
+
+.xxxx {
+  color: green !important;
 }
 </style>

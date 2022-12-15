@@ -25,4 +25,8 @@ let leftDrawerOpen = $ref(false);
 const toggleLeftDrawer = () => (leftDrawerOpen = !leftDrawerOpen);
 </script>
 
-<style scoped></style>
+<style>
+.q-hoverable-remvoe:hover {
+  color: transparent !important;
+}
+</style>
