@@ -64,26 +64,4 @@ let root = $ref(true);
 let q2 = $ref(false);
 </script>
 
-<style scoped>
-.q-item__section--avatar {
-  color: inherit;
-  min-width: 0px;
-}
-.baseItemActive {
-  /* content: ''; */
-  /* position: absolute; */
-  width: 3px;
-  height: 100%;
-  background: #1976d2 !important;
-  /* top: 0; */
-  /* right: 0; */
-}
-
-/* .q-hoverable {
-  color: green !important;
-} */
-
-.xxxx {
-  color: green !important;
-}
-</style>
+<style scoped></style>
