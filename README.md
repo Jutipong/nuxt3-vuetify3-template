@@ -13,8 +13,8 @@ yarn install
 # npm
 npm install
 
-# pnpm
-pnpm install --shamefully-hoist
+# upgrade
+npx nuxi upgrade
 ```
 
 ## Development Server
