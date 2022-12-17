@@ -11,7 +11,12 @@
   <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px">
     <!-- home -->
     <q-list>
-      <q-item clickable :inset-level="0.0" class="rounded-l-full ml-2 my-1" :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''">
+      <q-item
+        clickable
+        :inset-level="0.0"
+        class="rounded-l-full ml-2 my-1"
+        :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
+      >
         <q-item-section avatar style="min-width: 0px">
           <Icon name="mdi:home" />
         </q-item-section>
@@ -47,17 +52,33 @@
     <q-list>
       <q-expansion-item header-class="q-hoverable-remvoe" v-model="root">
         <template v-slot:header>
-          <q-item-section :class="root ? 'text-sky-600' : 'text-black'" class="transition hover:scale-105 ease-in duration-300"> Menu 2 </q-item-section>
+          <q-item-section
+            :class="root ? 'text-sky-600' : 'text-black'"
+            class="transition hover:scale-105 ease-in duration-300"
+          >
+            Menu 2
+          </q-item-section>
         </template>
         <!-- item 1-->
-        <q-item clickable :inset-level="0.0" class="rounded-l-full ml-2 my-1" :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''">
+        <q-item
+          clickable
+          :inset-level="0.0"
+          class="rounded-l-full ml-2 my-1"
+          :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
+        >
           <q-item-section avatar style="min-width: 0px">
             <Icon name="mdi:home" />
           </q-item-section>
           <q-item-section class="transition hover:scale-105 ease-in duration-300">2.1</q-item-section>
         </q-item>
         <!-- item 2  -->
-        <q-item clickable v-bind:active="root" :inset-level="0.0" class="rounded-l-full ml-2 my-1" :class="root ? 'bg-sky-100 border-r-4 border-sky-600' : ''">
+        <q-item
+          clickable
+          v-bind:active="root"
+          :inset-level="0.0"
+          class="rounded-l-full ml-2 my-1"
+          :class="root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
+        >
           <q-item-section avatar style="min-width: 0px">
             <Icon name="mdi:home" />
           </q-item-section>
@@ -69,8 +90,9 @@
 </template>
 
 <script setup lang="ts">
+import { useDrawer } from '@/stores/drawer';
+const drawer = useDrawer();
+
 let root = $ref(true);
 let q2 = $ref(false);
 </script>
-
-<style scoped></style>

@@ -1,6 +1,10 @@
 <template>
   <div class="flex">
-    <div class="m-auto mt-52">
+    <div class="m-auto">
+      <pre>
+        {{ drawer.drawers }}
+      </pre>
+      <hr />
       <h1 class="text-6xl text-purple-500">Welcome to Nuxt3</h1>
       <h2>Counter: {{ counter.counter }}</h2>
       <button class="bg-blue-500 p-4 m-2" @click="counter.increment">+</button>
@@ -14,7 +18,9 @@
 
 <script setup lang="ts">
 import { useCounter } from '@/stores/counter';
+import { useDrawer } from '@/stores/drawer';
 import { useQuasar } from 'quasar';
+const drawer = useDrawer();
 const $q = useQuasar();
 const counter = useCounter();
 
