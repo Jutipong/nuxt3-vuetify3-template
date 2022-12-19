@@ -1,7 +1,13 @@
 export interface IDrawer {
   label: string;
-  route: string;
+  path: string;
   icon?: string;
   active: boolean;
-  children?: IDrawer[];
+  childrens?: IChildren[];
+}
+export interface IChildren {
+  label: string;
+  path: string;
+  icon?: string;
+  active: boolean;
 }

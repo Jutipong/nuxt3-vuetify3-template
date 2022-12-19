@@ -1,23 +1,60 @@
 import { defineStore } from 'pinia';
 import { IDrawer } from '@/types/layouts';
 
-export const useDrawer = defineStore('drawer', () => {
-  let drawers = $ref<Array<IDrawer>>([
-    {
-      label: 'Home',
-      route: '/home',
-      active: true,
-    },
-    {
-      label: 'Master',
-      route: '/master',
-      active: false,
-      children: [
-        { label: 'User', route: '/master/user', active: false },
-        { label: 'Role', route: '/master/role', active: false },
-      ],
-    },
-  ]);
+export const useDrawer = defineStore('drawer', {
+  state: () => ({
+    menus: [
+      {
+        label: 'Home',
+        icon: 'mdi:home',
+        path: '/',
+        active: false,
+      },
+      {
+        label: 'Master',
+        icon: 'mdi:home',
+        path: '/master',
+        active: false,
+        childrens: [
+          { label: 'User', icon: 'mdi:home', path: '/user', active: false },
+          { label: 'Role', icon: 'mdi:home', path: '/role', active: false },
+        ],
+      },
+      {
+        label: 'Config',
+        icon: 'mdi:home',
+        path: '/config',
+        active: false,
+        childrens: [
+          { label: 'User', icon: 'mdi:home', path: '/user', active: false },
+          { label: 'Role', icon: 'mdi:home', path: '/role', active: false },
+        ],
+      },
+    ] as IDrawer[],
+  }),
+  getters: {},
+  actions: {
+    onSelect(rootPath: string, childrenPath?: string) {
+      this.$reset();
 
-  return { drawers };
+      // 1 level
+      if (!childrenPath) {
+        let root = this.menus.find(r => r.path === rootPath);
+        if (root) {
+          root.active = true;
+        }
+        return;
+      }
+
+      // 2 level
+      let root = this.menus.find(r => r.path === rootPath);
+      if (root) {
+        root.active = true;
+      }
+      let children = root?.childrens?.find(r => r.path === childrenPath);
+      if (children) {
+        children.active = true;
+      }
+    },
+  },
 });

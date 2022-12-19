@@ -9,90 +9,32 @@
     </div>
   </q-img>
   <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px">
-    <!-- home -->
-    <q-list>
-      <q-item
-        clickable
-        :inset-level="0.0"
-        class="rounded-l-full ml-2 my-1"
-        :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
-      >
-        <q-item-section avatar style="min-width: 0px">
-          <Icon name="mdi:home" />
-        </q-item-section>
-        <q-item-section class="transition hover:scale-105 ease-in duration-300">Home</q-item-section>
-      </q-item>
-    </q-list>
-    <!-- end home -->
-    <!-- <q-list>
-      <q-expansion-item header-class="q-hoverable-remvoe">
-        <template v-slot:header>
-          <q-item-section
-            :class="!root ? 'text-sky-600' : 'text-black'"
-            class="transition hover:scale-105 ease-in duration-300"
-          >
-            Menu 1
-          </q-item-section>
-        </template>
-        <q-item
-          clickable
-          :inset-level="0.0"
-          :manual-focus="true"
-          class="rounded-l-full ml-2 my-1"
-          :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
-        >
-          <q-item-section avatar>
-            <Icon name="mdi:home" />
-          </q-item-section>
-          <q-item-section class="transition hover:scale-105 ease-in duration-300"> label 1.1</q-item-section>
-        </q-item>
-      </q-expansion-item>
-    </q-list> -->
-
-    <q-list>
-      <q-expansion-item header-class="q-hoverable-remvoe" v-model="root">
-        <template v-slot:header>
-          <q-item-section
-            :class="root ? 'text-sky-600' : 'text-black'"
-            class="transition hover:scale-105 ease-in duration-300"
-          >
-            Menu 2
-          </q-item-section>
-        </template>
-        <!-- item 1-->
-        <q-item
-          clickable
-          :inset-level="0.0"
-          class="rounded-l-full ml-2 my-1"
-          :class="!root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
-        >
-          <q-item-section avatar style="min-width: 0px">
-            <Icon name="mdi:home" />
-          </q-item-section>
-          <q-item-section class="transition hover:scale-105 ease-in duration-300">2.1</q-item-section>
-        </q-item>
-        <!-- item 2  -->
-        <q-item
-          clickable
-          v-bind:active="root"
-          :inset-level="0.0"
-          class="rounded-l-full ml-2 my-1"
-          :class="root ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
-        >
-          <q-item-section avatar style="min-width: 0px">
-            <Icon name="mdi:home" />
-          </q-item-section>
-          <q-item-section class="transition hover:scale-105 ease-in duration-300">2.2</q-item-section>
-        </q-item>
-      </q-expansion-item>
-    </q-list>
+    <div v-for="menu in drawer.menus" :key="menu.label + menu.icon">
+      <q-list class="border-b border-b-gray-100" v-if="!menu?.childrens">
+        <LayoutsItem :rootPath="menu.path" :childrenPath="''" :level="0.0" :menu="menu" />
+      </q-list>
+      <q-list class="border-b border-b-gray-100" v-else>
+        <q-expansion-item v-model="menu.active" header-style="min-height:42px" header-class="q-hoverable-remove">
+          <template v-slot:header>
+            <q-item-section
+              :class="menu.active ? 'text-sky-600' : 'text-black'"
+              class="transition hover:scale-105 ease-in duration-300">
+              {{ menu.label }}
+            </q-item-section>
+          </template>
+          <LayoutsItem
+            :rootPath="menu.path"
+            :childrenPath="children.path"
+            v-for="children in menu.childrens"
+            :level="0.1"
+            :menu="children" />
+        </q-expansion-item>
+      </q-list>
+    </div>
   </q-scroll-area>
 </template>
 
 <script setup lang="ts">
 import { useDrawer } from '@/stores/drawer';
 const drawer = useDrawer();
-
-let root = $ref(true);
-let q2 = $ref(false);
 </script>
