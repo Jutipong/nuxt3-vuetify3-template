@@ -3,8 +3,8 @@
     style="min-height: 42px"
     clickable
     :inset-level="level"
-    class="rounded-l-full ml-1 my-1"
-    :class="menu.active ? 'bg-sky-100 border-r-4 border-sky-600' : ''"
+    class="m-2 rounded-r-sm"
+    :class="menu.active ? 'bg-sky-100 border-l-4 border-sky-600' : ''"
     :to="rootPath + childrenPath"
     @click="drawer.onSelect(rootPath, childrenPath)">
     <q-item-section v-if="menu.icon" avatar style="min-width: 0px">

@@ -10,7 +10,7 @@
   </q-img>
   <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px">
     <div v-for="menu in drawer.menus" :key="menu.label + menu.icon">
-      <q-list class="border-b border-b-gray-100" v-if="!menu?.childrens">
+      <q-list class="border-b border-b-slate-50" v-if="!menu?.childrens">
         <LayoutsItem :rootPath="menu.path" :childrenPath="''" :level="0.0" :menu="menu" />
       </q-list>
       <q-list class="border-b border-b-gray-100" v-else>
