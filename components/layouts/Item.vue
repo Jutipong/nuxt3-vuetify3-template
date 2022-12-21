@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { IDrawer } from '@/types/layouts';
-const props = defineProps<{ rootPath: string; childrenPath?: string; level: number; menu: IDrawer }>();
+const { rootPath, childrenPath } = defineProps<{ rootPath: string; childrenPath?: string; level: number; menu: IDrawer }>();
 const route = useRoute();
-
-const isActive = () => {
-  const currentPath = `${props.rootPath}${props.childrenPath}`;
-  return route.path === currentPath;
-};
+const isActive = () => route.path === `${rootPath}${childrenPath}`;
 </script>
 
 <template>

@@ -1,21 +1,6 @@
 <script setup lang="ts">
 import { useDrawer } from '@/stores/drawer';
-const drawer = useDrawer();
-const route = useRoute();
-// let isActive = $ref(false);
-
-watch(route, newRoute => {
-  // checkPath();
-});
-
-onMounted(() => isActive());
-
-const isActive = () => {
-  console.log(route.path);
-  // const currentPath = `${props.rootPath}${props.childrenPath}`;
-  // isActive = route.path === currentPath;
-  // console.log(`currentPath: ${currentPath} isActive: ${isActive}`);
-};
+const { menus } = useDrawer();
 </script>
 
 <template>
@@ -29,26 +14,12 @@ const isActive = () => {
     </div>
   </q-img>
   <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px">
-    <div v-for="menu in drawer.menus" :key="menu.label + menu.icon">
+    <div v-for="(menu, index) in menus" :key="index + menu.path">
       <q-list class="border-b border-b-slate-50" v-if="!menu?.childrens">
         <LayoutsItem :rootPath="menu.path" :childrenPath="''" :level="0.0" :menu="menu" />
       </q-list>
       <q-list class="border-b border-b-gray-100" v-else>
-        <q-expansion-item v-model="menu.active" header-style="min-height:42px" header-class="q-hoverable-remove">
-          <template v-slot:header>
-            <q-item-section
-              :class="menu.active ? 'text-sky-600' : 'text-black'"
-              class="transition hover:scale-105 ease-in duration-300">
-              {{ menu.label }}
-            </q-item-section>
-          </template>
-          <LayoutsItem
-            :rootPath="menu.path"
-            :childrenPath="children.path"
-            v-for="children in menu.childrens"
-            :level="0.1"
-            :menu="children" />
-        </q-expansion-item>
+        <LayoutsExpansion :rootPath="menu.path" :menu="menu" />
       </q-list>
     </div>
   </q-scroll-area>
