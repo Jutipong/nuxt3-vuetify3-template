@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { useDrawer } from '@/stores/drawer';
+const drawer = useDrawer();
+const route = useRoute();
+// let isActive = $ref(false);
+
+watch(route, newRoute => {
+  // checkPath();
+});
+
+onMounted(() => isActive());
+
+const isActive = () => {
+  console.log(route.path);
+  // const currentPath = `${props.rootPath}${props.childrenPath}`;
+  // isActive = route.path === currentPath;
+  // console.log(`currentPath: ${currentPath} isActive: ${isActive}`);
+};
+</script>
+
 <template>
   <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
     <div class="w-full">
@@ -33,8 +53,3 @@
     </div>
   </q-scroll-area>
 </template>
-
-<script setup lang="ts">
-import { useDrawer } from '@/stores/drawer';
-const drawer = useDrawer();
-</script>

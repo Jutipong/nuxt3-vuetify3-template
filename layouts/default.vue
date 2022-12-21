@@ -1,3 +1,9 @@
+<script setup lang="ts">
+let leftDrawerOpen = $ref(false);
+const toggleLeftDrawer = () => (leftDrawerOpen = !leftDrawerOpen);
+const route = useRoute();
+</script>
+
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header reveal elevated class="text-white bg-primary">
@@ -21,15 +27,10 @@
 
     <q-page-container>
       <!-- <router-view /> -->
-      <slot></slot>
+      <slot> </slot>
     </q-page-container>
   </q-layout>
 </template>
-
-<script setup lang="ts">
-let leftDrawerOpen = $ref(false);
-const toggleLeftDrawer = () => (leftDrawerOpen = !leftDrawerOpen);
-</script>
 
 <style>
 .q-hoverable-remove {
